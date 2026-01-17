@@ -91,6 +91,7 @@ public class VodFragment extends BaseFragment implements ConfigCallback, SiteCal
     protected void initView() {
         EventBus.getDefault().register(this);
         mBinding.title.setSelected(true);
+        mBinding.link.setVisibility(View.GONE);
         setRecyclerView();
         setViewModel();
         showProgress();
@@ -145,7 +146,7 @@ public class VodFragment extends BaseFragment implements ConfigCallback, SiteCal
     private void setFabVisible(int position) {
         if (mAdapter.getItemCount() == 0) {
             mBinding.top.setVisibility(View.INVISIBLE);
-            mBinding.link.setVisibility(View.VISIBLE);
+            mBinding.link.setVisibility(View.GONE);
             mBinding.filter.setVisibility(View.GONE);
         } else if (!mAdapter.get(position).getFilters().isEmpty()) {
             mBinding.top.setVisibility(View.INVISIBLE);
@@ -154,7 +155,7 @@ public class VodFragment extends BaseFragment implements ConfigCallback, SiteCal
         } else if (position == 0 || mAdapter.get(position).getFilters().isEmpty()) {
             mBinding.top.setVisibility(View.INVISIBLE);
             mBinding.filter.setVisibility(View.GONE);
-            mBinding.link.show();
+            mBinding.link.setVisibility(View.GONE);
         }
     }
 
@@ -168,7 +169,7 @@ public class VodFragment extends BaseFragment implements ConfigCallback, SiteCal
         getFragment().scrollToTop();
         mBinding.top.setVisibility(View.INVISIBLE);
         if (mBinding.filter.getVisibility() == View.INVISIBLE) mBinding.filter.show();
-        else if (mBinding.link.getVisibility() == View.INVISIBLE) mBinding.link.show();
+        mBinding.link.setVisibility(View.GONE);
     }
 
     private boolean onLink(View view) {

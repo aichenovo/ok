@@ -156,7 +156,8 @@ public class HomeActivity extends BaseActivity implements NavigationBarView.OnIt
     private void setNavigation() {
         mBinding.navigation.getMenu().findItem(R.id.vod).setVisible(true);
         mBinding.navigation.getMenu().findItem(R.id.setting).setVisible(true);
-        mBinding.navigation.getMenu().findItem(R.id.live).setVisible(LiveConfig.hasUrl());
+        // 直播入口始终显示，因为配置加载时会使用固定URL
+        mBinding.navigation.getMenu().findItem(R.id.live).setVisible(true);
     }
 
     private boolean openLive() {

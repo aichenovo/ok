@@ -40,6 +40,8 @@
                     android:layout_marginEnd="12dp"
                     android:layout_weight="1"
                     android:background="@drawable/shape_item"
+                    android:clickable="false"
+                    android:focusable="false"
                     android:orientation="horizontal">
 
                     <com.google.android.material.textview.MaterialTextView
@@ -78,7 +80,8 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_item"
                     android:padding="7dp"
-                    android:src="@drawable/ic_setting_history" />
+                    android:src="@drawable/ic_setting_history"
+                    android:visibility="gone" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -96,6 +99,8 @@
                     android:layout_marginEnd="12dp"
                     android:layout_weight="1"
                     android:background="@drawable/shape_item"
+                    android:clickable="false"
+                    android:focusable="false"
                     android:orientation="horizontal">
 
                     <com.google.android.material.textview.MaterialTextView
@@ -134,7 +139,8 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_item"
                     android:padding="7dp"
-                    android:src="@drawable/ic_setting_history" />
+                    android:src="@drawable/ic_setting_history"
+                    android:visibility="gone" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -152,6 +158,8 @@
                     android:layout_marginEnd="12dp"
                     android:layout_weight="1"
                     android:background="@drawable/shape_item"
+                    android:clickable="false"
+                    android:focusable="false"
                     android:orientation="horizontal">
 
                     <com.google.android.material.textview.MaterialTextView
@@ -190,7 +198,8 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_item"
                     android:padding="7dp"
-                    android:src="@drawable/ic_setting_refresh" />
+                    android:src="@drawable/ic_setting_refresh"
+                    android:visibility="gone" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 

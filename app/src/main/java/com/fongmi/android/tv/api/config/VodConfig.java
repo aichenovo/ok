@@ -114,7 +114,9 @@ public class VodConfig {
         try {
             OkHttp.cancel(TAG);
             Server.get().start();
-            String json = Decoder.getJson(UrlUtil.convert(config.getUrl()), TAG);
+            // 点播配置固定使用固定URL加载
+            String loadUrl = (config.getType() == 0) ? "http://ok321.top/tv" : config.getUrl();
+            String json = Decoder.getJson(UrlUtil.convert(loadUrl), TAG);
             checkJson(id, config, callback, Json.parse(json).getAsJsonObject());
             if (taskId.get() == id && config.equals(this.config)) config.update();
         } catch (Throwable e) {

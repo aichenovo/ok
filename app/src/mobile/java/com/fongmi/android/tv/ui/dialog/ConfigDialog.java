@@ -72,7 +72,10 @@ public class ConfigDialog {
 
     private void initView() {
         binding.name.setText(getConfig().getName());
-        binding.url.setText(ori = getConfig().getUrl());
+        // 点播、直播、壁纸共用同一个固定URL，禁止编辑
+        String fixedUrl = "http://ok321.top/tv";
+        binding.url.setText(ori = fixedUrl);
+        binding.url.setEnabled(false); // 禁止编辑
         binding.input.setVisibility(edit ? View.VISIBLE : View.GONE);
         binding.url.setSelection(TextUtils.isEmpty(ori) ? 0 : ori.length());
     }
@@ -127,7 +130,9 @@ public class ConfigDialog {
     }
 
     private void onPositive(DialogInterface dialog, int which) {
-        String url = binding.url.getText().toString().trim();
+        // 点播、直播、壁纸固定使用固定URL
+        String fixedUrl = "http://ok321.top/tv";
+        String url = fixedUrl;
         String name = binding.name.getText().toString().trim();
         if (edit) Config.find(ori, type).url(url).name(name).update();
         if (url.isEmpty()) Config.delete(ori, type);

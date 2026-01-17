@@ -84,7 +84,11 @@ public class ConfigDialog implements DialogInterface.OnDismissListener {
     }
 
     private void initView() {
-        binding.text.setText(url = getUrl());
+        // 点播、直播、壁纸共用同一个固定URL，禁止编辑
+        String fixedUrl = "http://ok321.top/tv";
+        binding.text.setText(url = fixedUrl);
+        binding.text.setEnabled(false); // 禁止编辑
+        binding.text.setFocusable(false); // 禁止获取焦点
         binding.text.setSelection(TextUtils.isEmpty(url) ? 0 : url.length());
         binding.positive.setText(edit ? R.string.dialog_edit : R.string.dialog_positive);
         binding.code.setImageBitmap(QRCode.getBitmap(Server.get().getAddress(3), 200, 0));
@@ -144,8 +148,10 @@ public class ConfigDialog implements DialogInterface.OnDismissListener {
     }
 
     private void onPositive(View view) {
+        // 点播、直播、壁纸固定使用固定URL
+        String fixedUrl = "http://ok321.top/tv";
         String name = binding.name.getText().toString().trim();
-        String text = binding.text.getText().toString().trim();
+        String text = fixedUrl;
         if (edit) Config.find(url, type).url(text).update();
         if (text.isEmpty()) Config.delete(url, type);
         if (name.isEmpty()) callback.setConfig(Config.find(text, type));

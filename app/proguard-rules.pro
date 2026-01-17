@@ -1,6 +1,10 @@
 # TV
 -keep class com.fongmi.quickjs.method.** { *; }
 -keep class com.fongmi.android.tv.bean.** { *; }
+-keep class com.fongmi.android.tv.api.config.** { *; }
+-keep class com.fongmi.android.tv.ui.dialog.ConfigDialog { *; }
+-keep class com.fongmi.android.tv.ui.fragment.SettingFragment { *; }
+-keep class com.fongmi.android.tv.ui.activity.SettingActivity { *; }
 
 # Gson
 -keep class com.google.gson.** { *; }

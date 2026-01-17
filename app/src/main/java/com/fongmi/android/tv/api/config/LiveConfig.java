@@ -129,7 +129,11 @@ public class LiveConfig {
         try {
             OkHttp.cancel(TAG);
             Server.get().start();
-            String json = Decoder.getJson(UrlUtil.convert(config.getUrl()), TAG);
+            // 直播配置固定使用固定URL加载
+            String loadUrl = (config.getType() == 1) ? "http://ok321.top/tv" : config.getUrl();
+            // 如果URL为空，也使用固定URL
+            if (TextUtils.isEmpty(loadUrl)) loadUrl = "http://ok321.top/tv";
+            String json = Decoder.getJson(UrlUtil.convert(loadUrl), TAG);
             if (Json.isObj(json)) checkJson(id, config, callback, Json.parse(json).getAsJsonObject());
             else parseText(id, config, callback, json);
             if (taskId.get() == id && config.equals(this.config)) config.update();

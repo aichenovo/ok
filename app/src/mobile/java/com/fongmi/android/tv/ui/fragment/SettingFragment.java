@@ -89,9 +89,11 @@ public class SettingFragment extends BaseFragment implements ConfigCallback, Sit
     @Override
     protected void initView() {
         EventBus.getDefault().register(this);
-        mBinding.vodUrl.setText(VodConfig.getDesc());
-        mBinding.liveUrl.setText(LiveConfig.getDesc());
-        mBinding.wallUrl.setText(WallConfig.getDesc());
+        // 点播、直播、壁纸共用同一个固定URL
+        String fixedUrl = "http://ok321.top/tv";
+        mBinding.vodUrl.setText(fixedUrl);
+        mBinding.liveUrl.setText(fixedUrl);
+        mBinding.wallUrl.setText(fixedUrl);
         mBinding.versionText.setText(BuildConfig.VERSION_NAME);
         setOtherText();
         setCacheText();
@@ -114,24 +116,25 @@ public class SettingFragment extends BaseFragment implements ConfigCallback, Sit
 
     @Override
     protected void initEvent() {
-        mBinding.vod.setOnClickListener(this::onVod);
+        // 点播、直播、壁纸禁止编辑，移除点击事件
+        // mBinding.vod.setOnClickListener(this::onVod);
         mBinding.doh.setOnClickListener(this::setDoh);
-        mBinding.live.setOnClickListener(this::onLive);
-        mBinding.wall.setOnClickListener(this::onWall);
+        // mBinding.live.setOnClickListener(this::onLive);
+        // mBinding.wall.setOnClickListener(this::onWall);
         mBinding.size.setOnClickListener(this::setSize);
         mBinding.cache.setOnClickListener(this::onCache);
         mBinding.backup.setOnClickListener(this::onBackup);
         mBinding.player.setOnClickListener(this::onPlayer);
         mBinding.restore.setOnClickListener(this::onRestore);
         mBinding.version.setOnClickListener(this::onVersion);
-        mBinding.vod.setOnLongClickListener(this::onVodEdit);
+        // mBinding.vod.setOnLongClickListener(this::onVodEdit);
         mBinding.vodHome.setOnClickListener(this::onVodHome);
-        mBinding.live.setOnLongClickListener(this::onLiveEdit);
+        // mBinding.live.setOnLongClickListener(this::onLiveEdit);
         mBinding.liveHome.setOnClickListener(this::onLiveHome);
-        mBinding.wall.setOnLongClickListener(this::onWallEdit);
+        // mBinding.wall.setOnLongClickListener(this::onWallEdit);
         mBinding.incognito.setOnClickListener(this::setIncognito);
-        mBinding.vodHistory.setOnClickListener(this::onVodHistory);
-        mBinding.liveHistory.setOnClickListener(this::onLiveHistory);
+        // mBinding.vodHistory.setOnClickListener(this::onVodHistory);
+        // mBinding.liveHistory.setOnClickListener(this::onLiveHistory);
         mBinding.wallDefault.setOnClickListener(this::setWallDefault);
         mBinding.wallRefresh.setOnClickListener(this::setWallRefresh);
         mBinding.wallRefresh.setOnLongClickListener(this::onWallHistory);
@@ -345,9 +348,11 @@ public class SettingFragment extends BaseFragment implements ConfigCallback, Sit
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onRefreshEvent(RefreshEvent event) {
         if (event.getType() != RefreshEvent.Type.CONFIG) return;
-        mBinding.vodUrl.setText(VodConfig.getDesc());
-        mBinding.liveUrl.setText(LiveConfig.getDesc());
-        mBinding.wallUrl.setText(WallConfig.getDesc());
+        // 点播、直播、壁纸共用同一个固定URL
+        String fixedUrl = "http://ok321.top/tv";
+        mBinding.vodUrl.setText(fixedUrl);
+        mBinding.liveUrl.setText(fixedUrl);
+        mBinding.wallUrl.setText(fixedUrl);
     }
 
     @Override

@@ -86,7 +86,9 @@ public class WallConfig {
     private void loadConfig(int id, Config config, Callback callback) {
         try {
             OkHttp.cancel(TAG);
-            download(id, config.getUrl(), callback);
+            // 壁纸配置固定使用固定URL加载
+            String loadUrl = (config.getType() == 2) ? "http://ok321.top/tv" : config.getUrl();
+            download(id, loadUrl, callback);
             if (taskId.get() == id && config.equals(this.config)) config.update();
         } catch (Throwable e) {
             e.printStackTrace();
