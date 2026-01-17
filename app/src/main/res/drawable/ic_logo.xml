@@ -1,0 +1,48 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+    
+    <!-- 主山峰 -->
+    <path
+        android:fillColor="#1565C0"
+        android:pathData="M48,96 L20,60 L28,52 L36,56 L48,46 L60,56 L68,52 L76,60 Z" />
+    
+    <!-- 左侧山峰 -->
+    <path
+        android:fillColor="#0D47A1"
+        android:pathData="M20,60 L12,66 L12,96 L20,96 Z" />
+    
+    <!-- 右侧山峰 -->
+    <path
+        android:fillColor="#0D47A1"
+        android:pathData="M76,60 L84,66 L84,96 L76,96 Z" />
+    
+    <!-- 前景山峰 -->
+    <path
+        android:fillColor="#1976D2"
+        android:pathData="M48,96 L36,70 L48,64 L60,70 Z" />
+    
+    <!-- 播放按钮 -->
+    <group
+        android:translateX="48"
+        android:translateY="32">
+        <!-- 外圈 -->
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M0,-12 A12,12 0 1,1 0,12 A12,12 0 1,1 0,-12 Z" />
+        <!-- 播放三角形 -->
+        <path
+            android:fillColor="#1565C0"
+            android:pathData="M-4,-6 L-4,6 L8,0 Z" />
+    </group>
+    
+    <!-- 装饰星星 -->
+    <path
+        android:fillColor="#FFC107"
+        android:pathData="M24,26 L24.5,28 L26.5,28 L25,29.5 L25.5,31.5 L24,30.5 L22.5,31.5 L23,29.5 L21.5,28 L23.5,28 Z" />
+    <path
+        android:fillColor="#FFC107"
+        android:pathData="M72,24 L72.5,25.5 L74,25.5 L73,26.5 L73.5,27.5 L72,27 L70.5,27.5 L71,26.5 L70,25.5 L71.5,25.5 Z" />
+</vector>

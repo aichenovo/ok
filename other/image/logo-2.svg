@@ -1,4 +1,31 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
-<svg height="800px" width="800px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" xml:space="preserve">
-    <path style="fill:#FFFFFF;" d="M474.712,125.01L260.085,1.095c-2.527-1.46-5.643-1.46-8.17,0L37.288,125.01 c-2.527,1.46-4.085,4.156-4.085,7.075v247.83c0,2.919,1.558,5.616,4.085,7.075l214.627,123.915c1.264,0.73,2.674,1.095,4.085,1.095 s2.821-0.365,4.085-1.095L474.712,386.99c2.527-1.46,4.085-4.156,4.085-7.075v-247.83 C478.797,129.166,477.24,126.469,474.712,125.01z M256,17.604l198.287,114.481L256,246.566L57.713,132.085L256,17.604z M49.543,146.236L247.83,260.717v228.962L49.543,375.198V146.236z M264.17,489.679V260.717l198.287-114.481v228.962L264.17,489.679z" />
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <!-- 渐变背景 -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#E3F2FD;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#90CAF9;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" fill="url(#bgGradient)"/>
+  
+  <!-- 主山峰 -->
+  <path d="M256,450 L120,280 L160,230 L200,260 L256,200 L312,260 L352,230 L392,280 Z" fill="#1976D2"/>
+  
+  <!-- 左侧山峰 -->
+  <path d="M120,280 L80,320 L80,450 L120,450 Z" fill="#1565C0"/>
+  
+  <!-- 右侧山峰 -->
+  <path d="M392,280 L432,320 L432,450 L392,450 Z" fill="#1565C0"/>
+  
+  <!-- 前景山峰 -->
+  <path d="M256,450 L200,320 L256,300 L312,320 Z" fill="#42A5F5"/>
+  
+  <!-- 播放按钮 -->
+  <circle cx="256" cy="180" r="60" fill="#FFFFFF" opacity="0.95"/>
+  <path d="M226,150 L226,210 L306,180 Z" fill="#1976D2"/>
+  
+  <!-- 装饰光点 -->
+  <circle cx="160" cy="160" r="5" fill="#FFC107"/>
+  <circle cx="352" cy="155" r="4" fill="#FFC107"/>
 </svg>
