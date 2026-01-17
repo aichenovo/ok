@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="登峰影视 - 免费下载最新版本APK">
+    <title>登峰影视 - 下载中心</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+            text-align: center;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #1565C0 0%, #0D47A1 100%);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(21, 101, 192, 0.3);
+            position: relative;
+        }
+
+        .logo::before {
+            content: '▶';
+            color: white;
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 32px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        .version-info {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 30px;
+        }
+
+        .version {
+            font-size: 24px;
+            color: #667eea;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .version-desc {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+            white-space: pre-line;
+        }
+
+        .download-section {
+            margin-bottom: 30px;
+        }
+
+        .download-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .download-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .download-title {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .download-desc {
+            color: #999;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .download-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .download-btn:active {
+            transform: scale(0.98);
+        }
+
+        .download-btn.mobile {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            box-shadow: 0 4px 15px rgba(245, 87, 108, 0.4);
+        }
+
+        .download-btn.mobile:hover {
+            box-shadow: 0 6px 20px rgba(245, 87, 108, 0.6);
+        }
+
+        .tips {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .tips-title {
+            color: #856404;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .tips-content {
+            color: #856404;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .footer {
+            margin-top: 30px;
+            color: #999;
+            font-size: 12px;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .version {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo"></div>
+        <h1>登峰影视</h1>
+        <p class="subtitle">专业的影视播放应用</p>
+
+        <div class="version-info">
+            <div class="version">版本 5.1.3</div>
+            <div class="version-desc">1. 更新登峰影视logo
+2. 优化用户体验
+3. 修复已知问题</div>
+        </div>
+
+        <div class="download-section">
+            <div class="download-card">
+                <div class="download-title">📱 移动版 (Mobile)</div>
+                <div class="download-desc">适用于手机和平板设备</div>
+                <a href="https://raw.githubusercontent.com/Young0417/TVBOX_Android_fongmi/main/apk/mobile-arm64_v8a.apk" 
+                   class="download-btn mobile" 
+                   download="登峰影视-移动版-5.1.3.apk">
+                    ⬇ 下载移动版 APK
+                </a>
+            </div>
+
+            <div class="download-card">
+                <div class="download-title">📺 TV版 (Leanback)</div>
+                <div class="download-desc">适用于Android TV和电视盒子</div>
+                <a href="https://raw.githubusercontent.com/Young0417/TVBOX_Android_fongmi/main/apk/leanback-arm64_v8a.apk" 
+                   class="download-btn" 
+                   download="登峰影视-TV版-5.1.3.apk">
+                    ⬇ 下载TV版 APK
+                </a>
+            </div>
+        </div>
+
+        <div class="tips">
+            <div class="tips-title">📌 安装提示</div>
+            <div class="tips-content">
+                • 下载后需要在设置中允许"安装未知来源应用"<br>
+                • 建议使用Chrome浏览器下载以确保完整性<br>
+                • 如遇到下载问题，请检查网络连接
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2024 登峰影视 | 免费开源</p>
+            <p style="margin-top: 5px;">
+                <a href="https://github.com/Young0417/TVBOX_Android_fongmi" 
+                   style="color: #667eea; text-decoration: none;">GitHub 仓库</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // 添加下载统计（可选）
+        document.querySelectorAll('.download-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // 可以在这里添加下载统计代码
+                console.log('下载开始:', this.getAttribute('download'));
+            });
+        });
+
+        // 检测移动设备
+        if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            document.body.style.padding = '10px';
+        }
+    </script>
+</body>
+</html>
