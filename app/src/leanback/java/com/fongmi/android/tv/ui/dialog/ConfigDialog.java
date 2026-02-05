@@ -23,6 +23,7 @@ import com.fongmi.android.tv.impl.ConfigCallback;
 import com.fongmi.android.tv.server.Server;
 import com.fongmi.android.tv.ui.custom.CustomTextListener;
 import com.fongmi.android.tv.utils.FileChooser;
+import com.fongmi.android.tv.utils.ConfigManager;
 import com.fongmi.android.tv.utils.QRCode;
 import com.fongmi.android.tv.utils.ResUtil;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -85,7 +86,7 @@ public class ConfigDialog implements DialogInterface.OnDismissListener {
 
     private void initView() {
         // 点播、直播、壁纸共用同一个固定URL，禁止编辑
-        String fixedUrl = "http://ok321.top/tv";
+        String fixedUrl = ConfigManager.get().getDefaultUrl();
         binding.text.setText(url = fixedUrl);
         binding.text.setEnabled(false); // 禁止编辑
         binding.text.setFocusable(false); // 禁止获取焦点
@@ -149,7 +150,7 @@ public class ConfigDialog implements DialogInterface.OnDismissListener {
 
     private void onPositive(View view) {
         // 点播、直播、壁纸固定使用固定URL
-        String fixedUrl = "http://ok321.top/tv";
+        String fixedUrl = ConfigManager.get().getDefaultUrl();
         String name = binding.name.getText().toString().trim();
         String text = fixedUrl;
         if (edit) Config.find(url, type).url(text).update();

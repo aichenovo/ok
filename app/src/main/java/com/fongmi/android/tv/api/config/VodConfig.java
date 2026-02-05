@@ -14,6 +14,7 @@ import com.fongmi.android.tv.bean.Site;
 import com.fongmi.android.tv.impl.Callback;
 import com.fongmi.android.tv.server.Server;
 import com.fongmi.android.tv.utils.Notify;
+import com.fongmi.android.tv.utils.ConfigManager;
 import com.fongmi.android.tv.utils.UrlUtil;
 import com.github.catvod.bean.Doh;
 import com.github.catvod.bean.Header;
@@ -115,7 +116,7 @@ public class VodConfig {
             OkHttp.cancel(TAG);
             Server.get().start();
             // 点播配置固定使用固定URL加载
-            String loadUrl = (config.getType() == 0) ? "http://ok321.top/tv" : config.getUrl();
+            String loadUrl = (config.getType() == 0) ? ConfigManager.get().getDefaultUrl() : config.getUrl();
             String json = Decoder.getJson(UrlUtil.convert(loadUrl), TAG);
             checkJson(id, config, callback, Json.parse(json).getAsJsonObject());
             if (taskId.get() == id && config.equals(this.config)) config.update();

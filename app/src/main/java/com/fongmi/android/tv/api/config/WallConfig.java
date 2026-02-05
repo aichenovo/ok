@@ -16,6 +16,7 @@ import com.fongmi.android.tv.impl.Callback;
 import com.fongmi.android.tv.utils.Download;
 import com.fongmi.android.tv.utils.FileUtil;
 import com.fongmi.android.tv.utils.Notify;
+import com.fongmi.android.tv.utils.ConfigManager;
 import com.fongmi.android.tv.utils.ResUtil;
 import com.fongmi.android.tv.utils.UrlUtil;
 import com.github.catvod.net.OkHttp;
@@ -87,7 +88,7 @@ public class WallConfig {
         try {
             OkHttp.cancel(TAG);
             // 壁纸配置固定使用固定URL加载
-            String loadUrl = (config.getType() == 2) ? "http://ok321.top/tv" : config.getUrl();
+            String loadUrl = (config.getType() == 2) ? ConfigManager.get().getDefaultUrl() : config.getUrl();
             download(id, loadUrl, callback);
             if (taskId.get() == id && config.equals(this.config)) config.update();
         } catch (Throwable e) {

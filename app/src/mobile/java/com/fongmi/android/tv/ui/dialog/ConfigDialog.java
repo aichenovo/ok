@@ -20,6 +20,7 @@ import com.fongmi.android.tv.databinding.DialogConfigBinding;
 import com.fongmi.android.tv.impl.ConfigCallback;
 import com.fongmi.android.tv.ui.custom.CustomTextListener;
 import com.fongmi.android.tv.utils.FileChooser;
+import com.fongmi.android.tv.utils.ConfigManager;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 public class ConfigDialog {
@@ -73,7 +74,7 @@ public class ConfigDialog {
     private void initView() {
         binding.name.setText(getConfig().getName());
         // 点播、直播、壁纸共用同一个固定URL，禁止编辑
-        String fixedUrl = "http://ok321.top/tv";
+        String fixedUrl = ConfigManager.get().getDefaultUrl();
         binding.url.setText(ori = fixedUrl);
         binding.url.setEnabled(false); // 禁止编辑
         binding.input.setVisibility(edit ? View.VISIBLE : View.GONE);
@@ -131,7 +132,7 @@ public class ConfigDialog {
 
     private void onPositive(DialogInterface dialog, int which) {
         // 点播、直播、壁纸固定使用固定URL
-        String fixedUrl = "http://ok321.top/tv";
+        String fixedUrl = ConfigManager.get().getDefaultUrl();
         String url = fixedUrl;
         String name = binding.name.getText().toString().trim();
         if (edit) Config.find(ori, type).url(url).name(name).update();

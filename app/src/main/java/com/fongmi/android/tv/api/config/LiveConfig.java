@@ -21,6 +21,7 @@ import com.fongmi.android.tv.impl.Callback;
 import com.fongmi.android.tv.server.Server;
 import com.fongmi.android.tv.ui.activity.LiveActivity;
 import com.fongmi.android.tv.utils.Notify;
+import com.fongmi.android.tv.utils.ConfigManager;
 import com.fongmi.android.tv.utils.UrlUtil;
 import com.github.catvod.bean.Header;
 import com.github.catvod.bean.Proxy;
@@ -130,9 +131,9 @@ public class LiveConfig {
             OkHttp.cancel(TAG);
             Server.get().start();
             // 直播配置固定使用固定URL加载
-            String loadUrl = (config.getType() == 1) ? "http://ok321.top/tv" : config.getUrl();
+            String loadUrl = (config.getType() == 1) ? ConfigManager.get().getDefaultUrl() : config.getUrl();
             // 如果URL为空，也使用固定URL
-            if (TextUtils.isEmpty(loadUrl)) loadUrl = "http://ok321.top/tv";
+            if (TextUtils.isEmpty(loadUrl)) loadUrl = ConfigManager.get().getDefaultUrl();
             String json = Decoder.getJson(UrlUtil.convert(loadUrl), TAG);
             if (Json.isObj(json)) checkJson(id, config, callback, Json.parse(json).getAsJsonObject());
             else parseText(id, config, callback, json);

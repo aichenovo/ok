@@ -41,6 +41,7 @@ import com.fongmi.android.tv.utils.FileUtil;
 import com.fongmi.android.tv.utils.Notify;
 import com.fongmi.android.tv.utils.PermissionUtil;
 import com.fongmi.android.tv.utils.ResUtil;
+import com.fongmi.android.tv.utils.ConfigManager;
 import com.github.catvod.bean.Doh;
 import com.github.catvod.net.OkHttp;
 import com.github.catvod.utils.Path;
@@ -90,7 +91,7 @@ public class SettingFragment extends BaseFragment implements ConfigCallback, Sit
     protected void initView() {
         EventBus.getDefault().register(this);
         // 点播、直播、壁纸共用同一个固定URL
-        String fixedUrl = "http://ok321.top/tv";
+        String fixedUrl = ConfigManager.get().getDefaultUrl();
         mBinding.vodUrl.setText(fixedUrl);
         mBinding.liveUrl.setText(fixedUrl);
         mBinding.wallUrl.setText(fixedUrl);
@@ -349,7 +350,7 @@ public class SettingFragment extends BaseFragment implements ConfigCallback, Sit
     public void onRefreshEvent(RefreshEvent event) {
         if (event.getType() != RefreshEvent.Type.CONFIG) return;
         // 点播、直播、壁纸共用同一个固定URL
-        String fixedUrl = "http://ok321.top/tv";
+        String fixedUrl = ConfigManager.get().getDefaultUrl();
         mBinding.vodUrl.setText(fixedUrl);
         mBinding.liveUrl.setText(fixedUrl);
         mBinding.wallUrl.setText(fixedUrl);

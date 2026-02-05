@@ -130,4 +130,20 @@ public class FileUtil {
         int digitGroups = (int) (Math.log10(size) / Math.log10(1024));
         return new DecimalFormat("#,##0.#").format(size / Math.pow(1024, digitGroups)) + " " + units[digitGroups];
     }
+
+    public static String readTextFile(File file) throws IOException {
+        StringBuilder sb = new StringBuilder();
+        try (FileInputStream fis = new FileInputStream(file);
+             java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.InputStreamReader(fis))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                sb.append(line);
+            }
+        }
+        return sb.toString();
+    }
+
+    public static String readTextFile(String path) throws IOException {
+        return readTextFile(new File(path));
+    }
 }
