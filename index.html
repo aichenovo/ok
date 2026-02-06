@@ -212,54 +212,107 @@
         <h1>登峰影视</h1>
         <p class="subtitle">专业的影视播放应用</p>
 
-        <div class="version-info">
-            <div class="version">版本 5.1.4</div>
-            <div class="version-desc">1. 修复配置链接问题
+        <!-- 密码验证表单 -->
+        <div id="login-section" class="login-section">
+            <h2 style="color: #333; margin-bottom: 20px;">访问验证</h2>
+            <p style="color: #666; margin-bottom: 30px;">请输入访问密码以获取下载链接</p>
+            <input type="password" id="password" placeholder="请输入密码" 
+                   style="width: 100%; padding: 12px 15px; border: 2px solid #667eea; border-radius: 25px; font-size: 16px; margin-bottom: 20px;">
+            <button id="login-btn" class="download-btn" 
+                    style="width: 100%;">
+                验证访问
+            </button>
+            <p id="error-message" style="color: #ff4757; margin-top: 15px; display: none;">密码错误，请重新输入</p>
+        </div>
+
+        <!-- 下载内容（初始隐藏） -->
+        <div id="content-section" style="display: none;">
+            <div class="version-info">
+                <div class="version">版本 5.1.4</div>
+                <div class="version-desc">1. 修复配置链接问题
 2. 优化用户体验
 3. 修复已知问题</div>
-        </div>
-
-        <div class="download-section">
-            <div class="download-card">
-                <div class="download-title">📱 移动版 (Mobile)</div>
-                <div class="download-desc">适用于手机和平板设备</div>
-                <a href="https://raw.githubusercontent.com/Young0417/TVBOX_Android_fongmi/main/apk/mobile-arm64_v8a.apk" 
-                   class="download-btn mobile" 
-                   download="登峰影视-移动版-5.1.4.apk">
-                    ⬇ 下载移动版 APK
-                </a>
             </div>
 
-            <div class="download-card">
-                <div class="download-title">📺 TV版 (Leanback)</div>
-                <div class="download-desc">适用于Android TV和电视盒子</div>
-                <a href="https://raw.githubusercontent.com/Young0417/TVBOX_Android_fongmi/main/apk/leanback-arm64_v8a.apk" 
-                   class="download-btn" 
-                   download="登峰影视-TV版-5.1.4.apk">
-                    ⬇ 下载TV版 APK
-                </a>
-            </div>
-        </div>
+            <div class="download-section">
+                <div class="download-card">
+                    <div class="download-title">📱 移动版 (Mobile)</div>
+                    <div class="download-desc">适用于手机和平板设备</div>
+                    <a href="https://raw.githubusercontent.com/Young0417/TVBOX_Android_fongmi/main/apk/mobile-arm64_v8a.apk" 
+                       class="download-btn mobile" 
+                       download="登峰影视-移动版-5.1.4.apk">
+                        ⬇ 下载移动版 APK
+                    </a>
+                </div>
 
-        <div class="tips">
-            <div class="tips-title">📌 安装提示</div>
-            <div class="tips-content">
-                • 下载后需要在设置中允许"安装未知来源应用"<br>
-                • 建议使用Chrome浏览器下载以确保完整性<br>
-                • 如遇到下载问题，请检查网络连接
+                <div class="download-card">
+                    <div class="download-title">📺 TV版 (Leanback)</div>
+                    <div class="download-desc">适用于Android TV和电视盒子</div>
+                    <a href="https://raw.githubusercontent.com/Young0417/TVBOX_Android_fongmi/main/apk/leanback-arm64_v8a.apk" 
+                       class="download-btn" 
+                       download="登峰影视-TV版-5.1.4.apk">
+                        ⬇ 下载TV版 APK
+                    </a>
+                </div>
             </div>
-        </div>
 
-        <div class="footer">
-            <p>© 2026 登峰影视 | 免费开源</p>
-            <p style="margin-top: 5px;">
-                <a href="https://github.com/Young0417/TVBOX_Android_fongmi" 
-                   style="color: #667eea; text-decoration: none;">GitHub 仓库</a>
-            </p>
+            <div class="tips">
+                <div class="tips-title">📌 安装提示</div>
+                <div class="tips-content">
+                    • 下载后需要在设置中允许"安装未知来源应用"<br>
+                    • 建议使用Chrome浏览器下载以确保完整性<br>
+                    • 如遇到下载问题，请检查网络连接
+                </div>
+            </div>
+
+            <div class="footer">
+                <p>© 2026 登峰影视 | 免费开源</p>
+                <p style="margin-top: 5px;">
+                    <a href="https://github.com/Young0417/TVBOX_Android_fongmi" 
+                       style="color: #667eea; text-decoration: none;">GitHub 仓库</a>
+                </p>
+            </div>
         </div>
     </div>
 
     <script>
+        // 访问密码
+        const ACCESS_PASSWORD = '990727';
+
+        // 验证功能
+        document.getElementById('login-btn').addEventListener('click', function() {
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('error-message');
+            
+            if (password === ACCESS_PASSWORD) {
+                // 密码正确，显示内容
+                document.getElementById('login-section').style.display = 'none';
+                document.getElementById('content-section').style.display = 'block';
+                errorMessage.style.display = 'none';
+                
+                // 存储验证状态到本地存储
+                localStorage.setItem('tvbox_access', 'granted');
+            } else {
+                // 密码错误，显示错误信息
+                errorMessage.style.display = 'block';
+            }
+        });
+
+        // 回车键验证
+        document.getElementById('password').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.getElementById('login-btn').click();
+            }
+        });
+
+        // 检查本地存储中的验证状态
+        window.onload = function() {
+            if (localStorage.getItem('tvbox_access') === 'granted') {
+                document.getElementById('login-section').style.display = 'none';
+                document.getElementById('content-section').style.display = 'block';
+            }
+        };
+
         // 添加下载统计（可选）
         document.querySelectorAll('.download-btn').forEach(btn => {
             btn.addEventListener('click', function() {
